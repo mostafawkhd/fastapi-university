@@ -2,7 +2,8 @@ from fastapi import APIRouter
 from application.crud.students import get_all_students,insert_student,delete_student
 from application.crud.departments import get_all_departments,insert_department,delete_department
 from application.crud.instructors import get_all_instructors,insert_instructor,delete_instructor
-from application.schemas import Student,Department,Instructor
+from application.crud.courses import get_all_courses,insert_course,delete_course
+from application.schemas import Student,Department,Instructor,Course
 
 router=APIRouter()
 
@@ -41,9 +42,9 @@ async def remove_department(department_id):
 
 @router.get('/instructors')
 async def show_instructors():
-    students=await get_all_instructors()
+    instructors=await get_all_instructors()
     
-    return students
+    return instructors
 
 @router.post('/instructors')
 async def create_instructor(instructor : Instructor):
@@ -52,3 +53,20 @@ async def create_instructor(instructor : Instructor):
 @router.delete('/instructors/{instructor_id}')
 async def remove_instructor(instructor_id):
     await delete_instructor(instructor_id)  
+
+
+
+
+@router.get('/courses')
+async def show_courses():
+    courses=await get_all_courses()
+    
+    return courses
+
+@router.post('/courses')
+async def create_course(course : Course):
+    await insert_course(course)
+
+@router.delete('/courses/{course_id}')
+async def remove_course(course_id):
+    await delete_course(course_id)  
