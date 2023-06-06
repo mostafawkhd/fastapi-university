@@ -15,3 +15,7 @@ async def insert_student(student: Student):
     query = "INSERT INTO Student VALUES (:student_id, :student_fname, :student_lname, :student_gpa)"
     await database.execute(query=query, values=values)
 
+
+async def delete_student(student_id):
+    query = f'DELETE FROM Student WHERE student_id="{student_id}"'
+    await database.execute(query=query)
