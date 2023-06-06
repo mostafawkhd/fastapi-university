@@ -16,7 +16,7 @@ class Course(BaseModel):
 class Instructor(BaseModel):
     ins_id: str
     ins_fname: str
-    ins_lanme: str 
+    ins_lname: str 
 
 class Department(BaseModel):
     dep_id: str
